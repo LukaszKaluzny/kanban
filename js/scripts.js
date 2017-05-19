@@ -65,8 +65,9 @@ $(function() {
       $cardDelete.click(function(){
         self.removeCard();
       });
-      return $card;
       $card.append($cardDelete)
+      return $card;
+      
       
     }
   }

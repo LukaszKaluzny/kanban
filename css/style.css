@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  margin: 5px auto;
+  margin: 0px auto;
   text-align: center;
   background-color: lightblue;
 
@@ -21,14 +21,17 @@ button {
 }
 div {
   display: inline-block;
-  padding: 10px;
+  padding: 0 10px;
   text-align: center;
 }
 div.column {
   border-left: 3px dashed lightgreen;
+  vertical-align: top;
 }
 .column-title {
   background-color: lightgreen;
+  border-radius: 10px;
+  padding: 0 15px;
 
 }
 button.create-column {
@@ -48,6 +51,7 @@ div.column:hover button.btn-delete {
 ul.column-card-list {
   padding: 0;
   list-style-type: none;
+  min-height: 100px;
 }
 li.card {
 
