@@ -25,18 +25,28 @@ div {
   text-align: center;
 }
 div.column {
-  border-left: 3px dashed lightgreen;
+  border-left: 3px dashed black;
   vertical-align: top;
+}
+div.column:last-child {
+  border-right: 3px dashed black;
 }
 .column-title {
   background-color: lightgreen;
   border-radius: 10px;
   padding: 0 15px;
+  /*margin: 0;*/
+}
+.column-title h2 {
 
 }
 button.create-column {
   border-radius: 5px;
   background-color: lightgreen;
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+
 }
 button.add-card {
   border-radius: 5px;
@@ -52,7 +62,4 @@ ul.column-card-list {
   padding: 0;
   list-style-type: none;
   min-height: 100px;
-}
-li.card {
-
 }
