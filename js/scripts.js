@@ -13,36 +13,43 @@ $(function() {
     this.id = randomString();
     this.name = name;
     this.$element = createColumn();
-
-    function createColumn() {
-      var $column = $('<div>').addClass('column');
+      };
       Column.prototype = {
         addCard: function(card) {
           this.$element.children('ul').append(card.$element);
+          console.log(123)
         },
         removeColumn: function() {
           this.$element.remove();
         }
-      };
-      var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
-      var $columnCardList = $('<ul>').addClass('column-card-list');
-      var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-      var $columnAddCard = $('<button>').addClass('add-card').text('Dodaj kartę');
-      $columnDelete.click(function() {
+    }
+    function createColumn() {
+// CREATING COMPONENTS OF COLUMNS
+    var $column = $('<div>').addClass('column');
+    var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
+    var $columnCardList = $('<ul>').addClass('column-card-list');
+    var $columnDelete = $('<button>').addClass('btn-delete').text('x');
+    var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
+
+// ADDING EVENTS
+    $columnDelete.click(function() {
         self.removeColumn();
-      });
-      $columnAddCard.click(function() {
-        self.addCard(new Card(prompt("Wpisz nazwę karty")));
-      });
-      // KONSTRUOWANIE ELEMENTU KOLUMNY
-      $column.append($columnTitle)
+    });
+    $columnAddCard.click(function(event) {
+        self.addCard(new Card(prompt("Enter the name of the card")));
+    });
+
+// CONSTRUCTION COLUMN ELEMENT
+    $column.append($columnTitle)
         .append($columnDelete)
         .append($columnAddCard)
         .append($columnCardList);
-      // ZWRACANIE STWORZONEJ  KOLUMNY
-      return $column;
-      }
-  }
+
+// RETURN OF CREATED COLUMN
+    return $column;
+}
+  
+  
   function Card(description) {
     var self = this;
 
@@ -60,13 +67,13 @@ $(function() {
         .append($cardDescription);
       return $card;
       });
-      Card.prototype = {
+    }
+  }
+  Card.prototype = {
         removeCard: function() {
           this.$element.remove();
         }
       }
-    }
-  }
   var board = {
     name: 'Tablica Kanban',
     addColumn: function(column) {
@@ -87,8 +94,7 @@ $(function() {
       var column = new Column(name);
       board.addColumn(column);
     });
-})
-// TWORZENIE KOLUMN
+  // TWORZENIE KOLUMN
 var todoColumn = new Column('Do zrobienia');
 var doingColumn = new Column('W trakcie');
 var doneColumn = new Column('Skończone');
@@ -105,3 +111,6 @@ var card2 = new Card('Stworzyc tablice kanban');
 // DODAWANIE KART DO KOLUMN
 todoColumn.addCard(card1);
 doingColumn.addCard(card2);
+});
+
+
