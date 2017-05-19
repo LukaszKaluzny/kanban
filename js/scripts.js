@@ -19,14 +19,14 @@ $(function() {
       var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
       var $columnCardList = $('<ul>').addClass('column-card-list');
       var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-      var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
+      var $columnAddCard = $('<button>').addClass('add-card').text('Dodaj kartę');
 
 // ADDING EVENTS
       $columnDelete.click(function() {
         self.removeColumn();
       });
       $columnAddCard.click(function(event) {
-        self.addCard(new Card(prompt("Enter the name of the card")));
+        self.addCard(new Card(prompt("Podaj nazwę karty")));
       });
 // CONSTRUCTION COLUMN ELEMENT
       $column.append($columnTitle)
@@ -88,7 +88,8 @@ $(function() {
     $('.column-card-list').sortable({
       connectWith: '.column-card-list',
       placeholder: 'card-placeholder'
-    }).disableSelection();
+    })
+    .disableSelection();
   }
   $('.create-column')
   .click(function(){
@@ -107,12 +108,12 @@ $(function() {
   board.addColumn(doneColumn);
 
 // TWORZENIE NOWYCH EGZEMPLARZY KART
-  var card1 = new Card('Nowe zadanie');
-  var card2 = new Card('Stworzyc tablice kanban');
+  // var card1 = new Card('Nowe zadanie');
+  // var card2 = new Card('Stworzyc tablice kanban');
 
 // DODAWANIE KART DO KOLUMN
-  todoColumn.addCard(card1);
-  doingColumn.addCard(card2);
+  // todoColumn.addCard(card1);
+  // doingColumn.addCard(card2);
 });
 
 
