@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo|Covered+By+Your+Grace|Nothing+You+Could+Do');
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 5px auto;
+  text-align: center;
+  background-color: lightblue;
+
+}
+h1, h2 {
+  font-family: 'Baloo', cursive;
+}
+p {
+  font-family: 'Nothing You Could Do', cursive;
+  font-weight: 900;
+}
+button {
+  font-family: 'Baloo', cursive;
+}
+div {
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+}
+div.column {
+  border-left: 3px dashed lightgreen;
+}
+.column-title {
+  background-color: lightgreen;
+
+}
+button.create-column {
+  border-radius: 5px;
+  background-color: lightgreen;
+}
+button.add-card {
+  border-radius: 5px;
+  background-color: lightblue;
+}
+button.btn-delete {
+  display: none;
+}
+div.column:hover button.btn-delete {
+  display: inline-block;
+}
+ul.column-card-list {
+  padding: 0;
+  list-style-type: none;
+}
+li.card {
+
+}
