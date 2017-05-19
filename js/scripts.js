@@ -13,6 +13,30 @@ $(function() {
     this.id = randomString();
     this.name = name;
     this.$element = createColumn();
+    function createColumn() {
+// CREATING COMPONENTS OF COLUMNS
+      var $column = $('<div>').addClass('column');
+      var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
+      var $columnCardList = $('<ul>').addClass('column-card-list');
+      var $columnDelete = $('<button>').addClass('btn-delete').text('x');
+      var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
+
+// ADDING EVENTS
+      $columnDelete.click(function() {
+        self.removeColumn();
+      });
+      $columnAddCard.click(function(event) {
+        self.addCard(new Card(prompt("Enter the name of the card")));
+      });
+// CONSTRUCTION COLUMN ELEMENT
+      $column.append($columnTitle)
+      .append($columnDelete)
+      .append($columnAddCard)
+      .append($columnCardList);
+
+// RETURN OF CREATED COLUMN
+      return $column;
+    }
   };
   Column.prototype = {
     addCard: function(card) {
@@ -22,48 +46,28 @@ $(function() {
     removeColumn: function() {
       this.$element.remove();
     }
-  }
-  function createColumn() {
-// CREATING COMPONENTS OF COLUMNS
-    var $column = $('<div>').addClass('column');
-    var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
-    var $columnCardList = $('<ul>').addClass('column-card-list');
-    var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-    var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
 
-// ADDING EVENTS
-    $columnDelete.click(function() {
-      elf.removeColumn();
-    });
-    $columnAddCard.click(function(event) {
-        self.addCard(new Card(prompt("Enter the name of the card")));
-    });
-// CONSTRUCTION COLUMN ELEMENT
-    $column.append($columnTitle)
-      .append($columnDelete)
-      .append($columnAddCard)
-      .append($columnCardList);
-
-// RETURN OF CREATED COLUMN
-    return $column;
   }
+  
   
   function Card(description) {
     var self = this;
     this.id = randomString();
     this.description = description;
-    this.$element = createCard(); //
+    this.$element = createCard();
+    
 
     function createCard() {
       var $card = $('<li>').addClass('card');
       var $cardDescription = $('<p>').addClass('card-description').text(self.description);
+      $card.append($cardDescription);
       var $cardDelete = $('<button>').addClass('btn-delete').text('x');
       $cardDelete.click(function(){
         self.removeCard();
-        $card.append($cardDelete)
-        .append($cardDescription);
-        return $card;
       });
+      return $card;
+      $card.append($cardDelete)
+      
     }
   }
   Card.prototype = {
